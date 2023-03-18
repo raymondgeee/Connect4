@@ -1,10 +1,6 @@
 # Connect4
   Vaultech Technical Exam
 
-# Requirements
-  PHP 7+\
-  Git
-
 # Technical Details
   Native PHP\
   HTML\
