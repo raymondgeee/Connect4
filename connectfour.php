@@ -4,7 +4,6 @@
 	<title>Connect Four - Game Exam</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="Bootstrap/Bootstrap 3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" href="Bootstrap/Font Awesome/css/font-awesome.css">
     <link rel="stylesheet" href="Bootstrap/Bootstrap 3.3.7/Roboto Font/roboto.css">
     <link rel="stylesheet" href="Bootstrap/w3css/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

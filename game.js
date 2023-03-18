@@ -14,7 +14,7 @@ var currentPlayer = 1;
 var startButton = document.getElementById("startButton");
 
 savePlayers.addEventListener("click", function() {
-     if(player1.value.trim() == player2.value.trim() && (player1.value.trim() != "" && player2.value.trim() != ""))
+    if(player1.value.trim() == player2.value.trim() && (player1.value.trim() != "" && player2.value.trim() != ""))
     {
         alert("Player Names must be unique!");
     }
@@ -57,11 +57,19 @@ for (var i = 0; i < drop.length; i++)
     });
 }
 
-function gameOver(player){
+function gameOver(player, draw = 0){
     $(".drop").attr('disabled', true);
     $(".playerText").hide();
-    player = player == "green" ? player1.value : player2.value ;
-    winnerText.innerHTML  = player + " Wins!";
+    if(player == 0)
+    {
+        winnerText.innerHTML  = "Draw!";
+    }
+    else
+    {
+        player = player == "green" ? player1.value : player2.value ;
+        winnerText.innerHTML  = player + " Wins!";
+    }
+    
     $(".winner").show();
 }
 
@@ -75,17 +83,15 @@ function dropPiece(column) {
             {
                 player.innerHTML = player2.value;
                 cell.className  = 'green';
-                // cell.style.backgroundColor = 'green';
             }
             else if(currentPlayer == 2)
             {
                 player.innerHTML = player1.value;
                 cell.className  = 'red';
-                // cell.style.backgroundColor = 'red';
             }
 
             cell.innerHTML = "P"+currentPlayer;
-            checker(i, column);
+            isDraw(board, i, column)
             currentPlayer = currentPlayer == 1 ? 2 : 1;
             return;
         }
@@ -139,7 +145,8 @@ function checker(row, column) {
     var j = column - Math.min(row, column);
     while (i <= 6 && j < 7) 
     {
-        if (board.rows[i].cells[j].className == player) {
+        if (board.rows[i].cells[j].className == player) 
+        {
             count++;
             if (count >= 4) 
             {
@@ -159,12 +166,10 @@ function checker(row, column) {
     count = 0;
     i = row + Math.min(6 - row, column);
     j = column - Math.min(6 - row, column);
-    console.log(i);
     while (i >= 0 && j < 7) 
     {
         if (board.rows[i].cells[j].className == player) {
             count++;
-            console.log(count);
             if (count >= 4) 
             {
                 gameOver(player);
@@ -178,4 +183,33 @@ function checker(row, column) {
         i--;
         j++;
     }
+}
+
+
+function isDraw(board, row, column) {
+    // Check if all columns are full
+    var count = 0;
+    for (var col = 0; col < 7; col++) 
+    {
+        if (board.rows[1].cells[col].innerHTML != "")
+        {
+            count++;
+        }
+    }
+
+    // Check for a winner
+    if (checker(row, column))
+    {
+        return false;
+    }
+    
+    if(count == 7)
+    {
+        gameOver(0, 1);
+        return;
+    }
+}
+
+function aiPlay(){
+    
 }
