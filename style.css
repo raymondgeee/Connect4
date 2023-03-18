@@ -5,3 +5,19 @@
 .red{
     background-color: #EE989A;
 }
+
+button{
+    font-weight: bold !important;
+}
+
+body{
+    font-family: Roboto Condensed !important;
+    font-size: 12px !important;
+    background-color: whitesmoke !important;;
+}
+
+td {
+    font-size: 12px !important;
+    font-family: Roboto Condensed !important;
+    font-weight: bold !important;
+}
