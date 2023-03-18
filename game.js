@@ -10,7 +10,6 @@ var savePlayers = document.getElementById("savePlayers");
 var player1 = document.getElementById("player1");
 var player2 = document.getElementById("player2");
 var currentPlayer = 1;
-player.innerHTML = currentPlayer;
 
 var startButton = document.getElementById("startButton");
 
@@ -23,6 +22,7 @@ savePlayers.addEventListener("click", function() {
     {
         $("#player1, #player2").attr("readonly", true);
         $("#startButton").removeAttr("disabled");
+        player.innerHTML = player1.value;
         $(this).hide();
     }
     else
@@ -73,13 +73,13 @@ function dropPiece(column) {
 
             if(currentPlayer == 1)
             {
-                player.innerHTML = 2;
+                player.innerHTML = player2.value;
                 cell.className  = 'green';
                 // cell.style.backgroundColor = 'green';
             }
             else if(currentPlayer == 2)
             {
-                player.innerHTML = 1;
+                player.innerHTML = player1.value;
                 cell.className  = 'red';
                 // cell.style.backgroundColor = 'red';
             }
